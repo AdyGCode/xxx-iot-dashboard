@@ -33,7 +33,7 @@ This code presumes certain hardware is being used.
 This project requires the following package(s):
 
 | Package | Purpose | Recommended Version |
-|------------------+-----------------------------------+----------------+
+|------------------|-----------------------------------|----------------|
 | `psutils`  | system utilities | v5.8.0 or later |
 | `piview`  | Raspberry Pi Information package | v2.0.3 or later |
 | `flask`  | Flask framework for web apps | v2. or later |
