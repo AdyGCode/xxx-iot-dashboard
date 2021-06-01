@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!-- Name:      templates/index.html
+     Purpose:   Used as the home page for the site -->
+
+{% block title %}
+Home | IoT Dashboard
+{% endblock %}
+
+{% block main %}
+<main>
+    <h1 class="text-4xl">Welcome to the IoT Dashboard</h1>
+
+    <div id="Temperature"></div>
+    <div id="Pressure"></div>
+    <div id="Humidity"></div>
+    <div id="Orientation"></div>
+
+    <div id="CPU-Load"></div>
+    <div id="RAM-Free"></div>
+    <div id="Storage-Free"></div>
+
+    <div id="CPU-Temperature"></div>
+    <div id="GPU-Temperature"></div>
+
+
+</main>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
