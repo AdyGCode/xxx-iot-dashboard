@@ -32,15 +32,15 @@ This code presumes certain hardware is being used.
 
 This project requires the following package(s):
 
-| Package | Purpose | Recommended Version |
-|------------------|-----------------------------------|----------------|
-| `psutils`  | system utilities | v5.8.0 or later |
-| `piview`  | Raspberry Pi Information package | v2.0.3 or later |
-| `flask`  | Flask framework for web apps | v2. or later |
-| `flask-cors`  | Flask CORS support for web apps | v3.0.10 or later |
-| `paho-mqtt`  | Python MQTT package  | v1.5.1 or later |
-| `SQLAlchemy`  | Python ORM for SQL databases  | v1.4.17 or later |
-| `mysql-connector-python`  | MySQL Connector for Python | v8.0.25 or later |
+| Package                   | Purpose                           | Recommended Version |
+|---------------------------|-----------------------------------|---------------------|
+| `psutils`                 | system utilities                  | v5.8.0 or later     |
+| `piview`                  | Raspberry Pi Information package  | v2.0.3 or later     |
+| `flask`                   | Flask framework for web apps      | v2. or later        |
+| `flask-cors`              | Flask CORS support for web apps   | v3.0.10 or later    |
+| `paho-mqtt`               | Python MQTT package               | v1.5.1 or later     |
+| `SQLAlchemy`              | Python ORM for SQL databases      | v1.4.17 or later    |
+| `mysql-connector-python`  | MySQL Connector for Python        | v8.0.25 or later    |
   
 
 Remaining packages are Python 'built-ins'.
