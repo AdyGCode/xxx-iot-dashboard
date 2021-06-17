@@ -9,16 +9,17 @@
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename= 'css/tailwind.css') }}"/>
+
     {% block styles %}{% endblock %}
 
 </head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal flex
+<body class="bg-gray-200 font-sans leading-normal tracking-normal flex
              flex-col justify-between h-screen">
 
 {% include 'components/header.html' %}
 
 <div class="mb-auto mt-24">
-    <div class="container shadow-lg mx-auto bg-white mt-6 md:mt-18 p-6 mb-12">
+    <div class="container shadow-lg mx-auto bg-gray-50 mt-6 md:mt-18 p-6 mb-12 rounded">
         {% block main %}{% endblock %}
     </div>
 </div>

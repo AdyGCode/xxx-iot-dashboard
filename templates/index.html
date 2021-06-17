@@ -8,43 +8,134 @@ Home | IoT Dashboard
 
 {% block main %}
 <main>
-    <h1 class="text-4xl">Welcome to the IoT Dashboard</h1>
+    <h1 class="text-4xl text-bold m-6">Welcome to the IoT
+        Dashboard</h1>
 
-    <div id="Temperature"></div>
-    <div id="Pressure"></div>
-    <div id="Humidity"></div>
-    <div id="Orientation"></div>
-
-    <div id="CPU-Load"></div>
-    <div id="RAM-Free"></div>
-    <div id="Storage-Free"></div>
-
-    <div id="CPU-Temperature"></div>
-    <div id="GPU-Temperature"></div>
-
-    <div>
-        <h2>Functions to Add</h2>
-        <p>The following list shows what is to be added to this application:</p>
-        <ul>
-            <li>Add `CPU DATA` page with CPU data shown - allow user to select
-                last 1, 10, 25, or 100 readings
+    <div class="m-6 p-6 rounded overflow-hidden shadow-lg bg-blue-200">
+        <h2 class="text-2xl pb-6">
+            Functions to Add
+        </h2>
+        <p class="pb-4">
+            The following list shows what is to be added to this application:
+        </p>
+        <ul class="list-disc pl-6">
+            <li class="pb-1">
+                Add `CPU DATA` page with CPU data shown - allow
+                user to select last 1, 10, 25, or 100 readings
             </li>
-            <li>Add `Temperature` page showing sense-hat temperature
-                readings, allowing user to select 1, minute 5 minutes, 10
-                minutes, 30 minutes or 60 minutes of data
+            <li class="pb-1">
+                Add `Temperature` page showing sense-hat temperature readings,
+                allowing user to select 1, minute 5 minutes, 10 minutes,
+                30 minutes or 60 minutes of data
             </li>
-            <li>Add `Pressure` page showing sense-hat temperature
-                readings, allowing user to select 1, minute 5 minutes, 10
-                minutes, 30 minutes or 60 minutes of data
+            <li class="pb-1">
+                Add `Pressure` page showing sense-hat temperature readings,
+                allowing user to select 1, minute 5 minutes, 10 minutes,
+                30 minutes or 60 minutes of data
             </li>
-            <li>Add `Humidity` page showing sense-hat temperature
-                readings, allowing user to select 1, minute 5 minutes, 10
-                minutes, 30 minutes or 60 minutes of data
+            <li class="pb-1">
+                Add `Humidity` page showing sense-hat temperature readings,
+                allowing user to select 1, minute 5 minutes, 10 minutes,
+                30 minutes or 60 minutes of data
             </li>
-            <li>Make all the above dynamic, updating every 15 seconds, and the
-                default amount shown to be the lowest value (eg 1 minute)
+            <li class="pb-1">
+                Make all the above dynamic, updating every 15 seconds, and
+                the default amount shown to be the lowest value (eg 1 minute)
             </li>
         </ul>
+    </div>
+
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+        <!--Card 1-->
+        <h3 class="col-span-full font-bold text-2xl">
+            Environment
+        </h3>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                Temperature
+            </h4>
+            <div id="Temperature" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                Pressure
+            </h4>
+            <div id="Pressure" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                Humidity
+            </h4>
+            <div id="Humidity" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                Orientation
+            </h4>
+            <div id="Orientation" class="p-4">
+                XX
+            </div>
+        </div>
+    </div>
+
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+        <!--Card 1-->
+        <h3 class="col-span-full font-bold text-2xl">Sensor</h3>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                CPU-Load
+            </h4>
+            <div id="CPU-Load" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                RAM-Free
+            </h4>
+            <div id="RAM-Free" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                Storage-Free
+            </h4>
+            <div id="Storage-Free" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                CPU-Temperature
+            </h4>
+            <div id="CPU-Temperature" class="p-4">
+                XX
+            </div>
+        </div>
+
+        <div class="rounded overflow-hidden shadow-lg ">
+            <h4 class="text-xl mb-2 bg-gray-100 text-gray-700 p-2 px-4">
+                GPU-Temperature
+            </h4>
+            <div id="GPU-Temperature" class="p-4">
+                XX
+            </div>
+        </div>
     </div>
 
 </main>
