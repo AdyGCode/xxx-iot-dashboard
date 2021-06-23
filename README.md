@@ -1,18 +1,15 @@
 # XXX IoT Dashboard
-
 A core project template for the analysis of current technologies and 
 their application to industry - specifically within Internet of Things.
 
-This code base is not complete, but **no** contributions are required.
+This code base is not complete. Contributions are **NOT** required.
 
 ## General Information
-
 * Free software: Open Software License ("OSL") v. 3.0
 * Documentation: To be added
 
 
 ## Features
-
 * Display readings in numerical format for Temperature, Pressure, Humidity and other details
 * Display readings for the sensor in numerical format for the CPU load, CPU Temperature and 
   other details
@@ -22,14 +19,12 @@ Possible additions:
 * Graph data
 
 ## Requirements
-
-This code presumes certain hardware is being used.
+This code presumes the use of certain hardware.
 
 ### Hardware:
 * Raspberry Pi 3B or later
 
 ### Package Requirements
-
 This project requires the following package(s):
 
 | Package                   | Purpose                           | Recommended Version |
@@ -47,10 +42,10 @@ Remaining packages are Python 'built-ins'.
 
 ### Package Installation
 
-The requirements above may be installed using:
+You may install the listed requirements using:
 
 ```shell
-pip3 install PACKAGE_NAME
+pip3 install PACKAGE_NAME 
 ```
 or using the PyCharm Project Preferences
 
