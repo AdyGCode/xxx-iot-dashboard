@@ -53,7 +53,7 @@ let cpuChart = new Chart(cpuChartCanvas, {
 })
 
 function cpuUpdate() {
-    let url = "http://localhost:5050/api/CPU-Temperture/" + (counterCPUPoints == 0 ? MAX_TEMP_POINTS : 1)
+    let url = "http://localhost:5050/api/CPU-Temperature/" + (counterCPUPoints == 0 ? MAX_TEMP_POINTS : 1)
     let method = "GET"
     let typeOfResponse = "json"
 

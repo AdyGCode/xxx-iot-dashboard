@@ -11,12 +11,16 @@ from DB import Base, db_connect, Sensehat_TPH, Sensor
 # Ensure the tables are created (IMPORTANT - NO DROP_ALL in this app)
 # ---------------------------------------------------------------------
 MyDashboardApp = Flask(__name__)
-MyDashboardApp = CORS(MyDashboardApp, resources={r"/api/*": {"origins": "*"}})
+MyDashboardCorsApp = CORS(MyDashboardApp,
+                          resources={
+                              r"/api/*": {"origins": "*"}
+                          })
 MyDashboardApp.config['CORS_HEADERS'] = 'Content-Type'
 
 engine = create_engine(db_connect)
 Base.metadata.create_all(engine, checkfirst=True)
 session = sessionmaker(bind=engine)()
+
 
 # ---------------------------------------------------------------------
 # Utility Method definitions
@@ -43,6 +47,7 @@ def records_to_list(records):
         result_list.append(object_as_dict(row))
     return result_list
 
+
 # ---------------------------------------------------------------------
 # Web Application Routes: STATIC PAGES
 # ---------------------------------------------------------------------
@@ -66,9 +71,10 @@ def about_page():
 
 
 @MyDashboardApp.route("/graph-demo")
-def about_page():
+def graph_demo():
     return render_template('graph-demo.html',
                            page="graph-demo")
+
 
 # ---------------------------------------------------------------------
 # API Routes: CPU-Temperature
@@ -76,7 +82,7 @@ def about_page():
 
 @MyDashboardApp.route("/api/CPU-Temperature")
 @cross_origin()
-def cpu_temperature_count():
+def cpu_temperature():
     cpu_temperature_count_start(1, 1)
 
 
@@ -100,6 +106,38 @@ def cpu_temperature_count_start(count, start):
     cpu_temp_json = jsonify(cpu_temp_records)
     return cpu_temp_json
 
+
+# ---------------------------------------------------------------------
+# API Routes: CPU-Load
+# ---------------------------------------------------------------------
+
+@MyDashboardApp.route("/api/CPU-Load")
+@cross_origin()
+def cpu_load():
+    cpu_load_count_start(1, 1)
+
+
+@MyDashboardApp.route("/api/CPU-Load/<int:count>")
+@cross_origin()
+def cpu_load_count(count):
+    cpu_load_count_start(count)
+
+
+@MyDashboardApp.route("/api/CPU-Load/<int:count>/<int:start>")
+@cross_origin()
+def cpu_load_count_start(count, start):
+    if start > 0:
+        start -= 1
+    # organise the data in reverse order
+    reverse_data_query = session.query(Sensor) \
+        .order_by(desc(Sensor.date_recorded))
+    # now retrieve the number of records required
+    result_proxy = reverse_data_query.limit(count).offset(start).all()
+    cpu_load_records = records_to_list(result_proxy)
+    cpu_load_json = jsonify(cpu_load_records)
+    return cpu_load_json
+
+
 # TODO: Create the API calls for at least one of:
 #       SenseHAT Temperature
 #       SenseHAT Pressure
@@ -119,7 +157,7 @@ def sensehat_x():
 @MyDashboardApp.route("/api/sensehat-X/<int:count>")
 @cross_origin()
 def sensehat_x_count(count):
-    sensehat_x_count_start(count,1)
+    sensehat_x_count_start(count, 1)
 
 
 @MyDashboardApp.route("/api/sensehat-X/<int:count>/<int:start>")
