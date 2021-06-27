@@ -1,7 +1,6 @@
-function joinDate(t, a, s) {
-   function format(m) {
-      let f = new Intl.DateTimeFormat('en', m);
-      return f.format(t);
-   }
-   return a.map(format).join(s);
+function origin() {
+    return window.location.origin
 }
+
+const isFirstDateInPast = (firstDate, secondDate) =>
+    firstDate.setHours(0, 0, 0, 0) - secondDate.setHours(0, 0, 0, 0) < 0

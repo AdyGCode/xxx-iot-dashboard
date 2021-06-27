@@ -15,63 +15,79 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
              id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
+
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='home' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='home' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
                               hover:text-underline py-2 px-4"
                        href="/">Home</a>
                 </li>
+
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='LINK' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
-                              hover:text-underline py-2 px-4"
-                       href="/temperature">Temperature</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='LINK' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
-                              hover:text-underline py-2 px-4"
-                       href="/pressure">Pressure</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='LINK' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
-                              hover:text-underline py-2 px-4"
-                       href="/humidity">Humidity</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='about' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='about' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
                               hover:text-underline py-2 px-4"
                        href="/about">About</a>
                 </li>
 
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='rainfall' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='Environmental Temperature' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
                               hover:text-underline py-2 px-4"
-                       href="/rainfall">Sample Output</a>
+                       href="/env-temp">Temperature</a>
                 </li>
+
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4
-                              {% if page=='clock' %} text-white
-                              {% else %} text-gray-400 {% endif %}
-                              no-underline hover:text-gray-200
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='Pressure' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
+                              hover:text-underline py-2 px-4"
+                       href="/pressure">Pressure</a>
+                </li>
+
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='Humidity' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
+                              hover:text-underline py-2 px-4"
+                       href="/humidity">Humidity</a>
+                </li>
+
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='CPU Load' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
+                              hover:text-underline py-2 px-4"
+                       href="/cpu-load">CPU Load</a>
+                </li>
+
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='CPU Temperature' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
+                              hover:text-underline py-2 px-4"
+                       href="/cpu-temp">CPU Temp</a>
+                </li>
+
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 rounded text-white
+                              transition-colors duration-500 ease-in-out
+                              {% if page=='clock' %} bg-blue-600 {% endif %}
+                              no-underline hover:text-black hover:bg-gray-400
                               hover:text-underline py-2 px-4"
                        href="/clock">Clock</a>
                 </li>
+
             </ul>
         </div>
     </nav>

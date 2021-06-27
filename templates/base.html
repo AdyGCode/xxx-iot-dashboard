@@ -10,6 +10,14 @@
     <link rel="stylesheet"
           href="{{ url_for('static', filename= 'css/tailwind.css') }}"/>
 
+    <link rel="shortcut icon" type="image/png"
+          href="{{ url_for('static',filename= 'img/favicon.png') }}"/>
+    <link rel="shortcut icon" type="image/svg+xml"
+          href="{{ url_for('static',filename= 'img/favicon.svg') }}"/>
+    <link rel="apple-touch-icon" type="image/svg+xml"
+          href="{{ url_for('static',filename= 'img/favicon.svg') }}"/>
+    <link rel="manifest" href="/manifest.webmanifest">
+
     {% block styles %}{% endblock %}
 
 </head>
@@ -19,7 +27,8 @@
 {% include 'components/header.html' %}
 
 <div class="mb-auto mt-24">
-    <div class="container shadow-lg mx-auto bg-gray-50 mt-6 md:mt-18 p-6 mb-12 rounded">
+    <div class="container shadow-lg mx-auto bg-gray-50 mt-2 md:mt-8 p-6 mb-8
+     rounded-md">
         {% block main %}{% endblock %}
     </div>
 </div>

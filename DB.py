@@ -8,11 +8,14 @@
 #           display the data as tables, graphs or other formats.
 # ---------------------------------------------------------------------
 
+# TODO: Make sure the SQL Alchemy UTCDateTime package is installed
+
 import urllib.parse
 
 from sqlalchemy import BigInteger, Boolean, Column, DateTime, Float, func, \
     Integer, SmallInteger, String, Text
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy_utcdatetime import UTCDateTime
 
 Base = declarative_base()
 
@@ -36,26 +39,22 @@ class Sensehat_TPH(Base):
     """
     TODO: Add a description to this class
 
-    TODO: Before working on the Environment class, check and complete the
-          sensor class as it has lots of examples.
     """
     __tablename__ = "iot_sensehat_tph"
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     topic = Column(String(255), default="ERROR")
-    client = Column(String(255), default="ERROR")
-    data = Column(Text, default="ERROR")
-    temperature = Column(Float, default=-999.9)
-    pressure = Column(Float, default=-999.9)
-    humidity = Column(Float, default=-999.9)
+    temperature = Column(Float, default=0.0)
+    pressure = Column(Float, default=0.0)
+    humidity = Column(Float, default=0.0)
     acceleration_x = Column(Float, default=0.0)
     acceleration_y = Column(Float, default=0.0)
     acceleration_z = Column(Float, default=0.0)
+    compass = Column(SmallInteger, default=0)
     pitch = Column(Float, default=0.0)
     yaw = Column(Float, default=0.0)
     roll = Column(Float, default=0.0)
-    compass = Column(SmallInteger, default=0)
-    recorded_at = Column(DateTime, default="1000-01-01 00:00:00")
-    created_at = Column(DateTime, server_default=func.now())
+    recorded_at = Column(UTCDateTime(), default="1000-01-01 00:00:00 UTC")
+    created_at = Column(UTCDateTime(), server_default=func.now())
 
     def __init__(self):
         pass
@@ -78,14 +77,16 @@ class Sensor(Base):
     __tablename__ = "iot_sensors"
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     topic = Column(String(255), default="ERROR")
-    client = Column(String(255), default="ERROR")
     data = Column(Text, default="ERROR")
     sensor_name = Column(String(64), default="UNKNOWN")
     message = Column(Text, default=None)
     model = Column(String(128), default="UNKNOWN")
     ip = Column(String(32), default="999.999.999.999")
-    mac = Column(String(32), default='zz:zz:zz:zz:zz:zz')
-    boot_time = Column(DateTime, default='1000-01-01 00:00:00')
+    mac = Column(String(32), default="zz:zz:zz:zz:zz:zz")
+    boot_time = Column(DateTime, default="1000-01-01 00:00:00")
+    cpu_max_load = Column(Float, default=-999)
+    gpu_max_load = Column(Float, default=-999)
+    cpu_temperature = Column(Float, default=-999)
     ram_total = Column(Integer, default=0)
     ram_free = Column(Integer, default=0)
     storage_total = Column(BigInteger, default=0)
@@ -95,8 +96,8 @@ class Sensor(Base):
     hw_camera_support = Column(Boolean, default=False)
     hw_camera_detected = Column(Boolean, default=False)
     hw_spi = Column(Boolean, default=False)
-    recorded_at = Column(DateTime, default="1000-01-01 00:00:00")
-    created_at = Column(DateTime, server_default=func.now())
+    recorded_at = Column(UTCDateTime(), default="1000-01-01 00:00:00 UTC")
+    created_at = Column(UTCDateTime(), server_default=func.now())
 
     def __init__(self):
         pass

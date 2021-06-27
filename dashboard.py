@@ -1,3 +1,26 @@
+# Project:    xxx-iot-dashboard
+# Filename:   dashboard.py
+# Location:   ./
+# Author:     STUDENT NAME <STUDENT TAFE EMAIL ADDRESS>
+# Created:    05/05/21
+# Purpose:
+#   This file provides the following features, methods and associated
+#   supporting code:
+#
+#   TODO: STUDENT TO DESCRIBE THE PURPOSE OF THIS FILE
+#
+# Requirements:
+#   An MQTT Server to act as a 'broker' to accept messages and pass onto
+#   subscribers to the message topic(s).
+#   Python 3.6 or later
+#
+# Required Packages:
+#   This project requires the following Python Packages to be installed:
+#       paho-mqtt
+#       piview http://piview.readthedocs.io
+#       SQLAlchemy
+#       MySQL Connector Python
+
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS, cross_origin
 from sqlalchemy import create_engine, desc, inspect
@@ -70,109 +93,96 @@ def about_page():
                            page="about")
 
 
-@MyDashboardApp.route("/graph-demo")
-def graph_demo():
-    return render_template('graph-demo.html',
-                           page="graph-demo")
+@MyDashboardApp.route("/cpu-temp")
+def cpu_temp_graph():
+    return render_template('cpu-temp.html',
+                           page="CPU Temperature")
+
+
+@MyDashboardApp.route("/cpu-load")
+def cpu_load_graph():
+    return render_template('cpu-load.html',
+                           page="CPU Load")
+
+
+@MyDashboardApp.route("/env-temp")
+def env_temp_graph():
+    return render_template('env-temp.html',
+                           page="Environmental Temperature")
+
+
+# app name
+@MyDashboardApp.errorhandler(404)
+# inbuilt function which takes error as parameter
+def not_found(e):
+    # defining function
+    return render_template("404.html",
+                           page="404")
 
 
 # ---------------------------------------------------------------------
 # API Routes: CPU-Temperature
 # ---------------------------------------------------------------------
 
-@MyDashboardApp.route("/api/CPU-Temperature")
+@MyDashboardApp.route("/api/CPU")
 @cross_origin()
-def cpu_temperature():
-    cpu_temperature_count_start(1, 1)
+def cpu():
+    return cpu_count()
 
 
-@MyDashboardApp.route("/api/CPU-Temperature/<int:count>")
+@MyDashboardApp.route("/api/CPU/<int:count>")
 @cross_origin()
-def cpu_temperature_count(count):
-    cpu_temperature_count_start(count)
+def cpu_count(count=1):
+    return cpu_count_start(count)
 
 
-@MyDashboardApp.route("/api/CPU-Temperature/<int:count>/<int:start>")
+@MyDashboardApp.route("/api/CPU/<int:count>/<int:start>")
 @cross_origin()
-def cpu_temperature_count_start(count, start):
-    if start > 0:
-        start -= 1
+def cpu_count_start(count=1, start=1):
+    if start < 1:
+        start = 1
+    session = sessionmaker(bind=engine)()
     # organise the data in reverse order
-    reverse_data_query = session.query(Sensor) \
-        .order_by(desc(Sensor.date_recorded))
+    reverse_data_query = session.query(Sensor).order_by(desc(Sensor.id))
     # now retrieve the number of records required
     result_proxy = reverse_data_query.limit(count).offset(start).all()
     cpu_temp_records = records_to_list(result_proxy)
     cpu_temp_json = jsonify(cpu_temp_records)
+    session.close()
     return cpu_temp_json
 
 
 # ---------------------------------------------------------------------
-# API Routes: CPU-Load
+# API Routes: Sensehat
 # ---------------------------------------------------------------------
 
-@MyDashboardApp.route("/api/CPU-Load")
+@MyDashboardApp.route("/api/sensehat")
 @cross_origin()
-def cpu_load():
-    cpu_load_count_start(1, 1)
+def sense_hat():
+    return sense_hat_count()
 
 
-@MyDashboardApp.route("/api/CPU-Load/<int:count>")
+@MyDashboardApp.route("/api/sensehat/<int:count>")
 @cross_origin()
-def cpu_load_count(count):
-    cpu_load_count_start(count)
+def sense_hat_count(count=1):
+    return sense_hat_count_start(count)
 
 
-@MyDashboardApp.route("/api/CPU-Load/<int:count>/<int:start>")
+@MyDashboardApp.route("/api/sensehat/<int:count>/<int:start>")
 @cross_origin()
-def cpu_load_count_start(count, start):
-    if start > 0:
-        start -= 1
-    # organise the data in reverse order
-    reverse_data_query = session.query(Sensor) \
-        .order_by(desc(Sensor.date_recorded))
-    # now retrieve the number of records required
-    result_proxy = reverse_data_query.limit(count).offset(start).all()
-    cpu_load_records = records_to_list(result_proxy)
-    cpu_load_json = jsonify(cpu_load_records)
-    return cpu_load_json
-
-
-# TODO: Create the API calls for at least one of:
-#       SenseHAT Temperature
-#       SenseHAT Pressure
-#       SenseHAT Humidity
-# ---------------------------------------------------------------------
-# TODO: Change the X to the desired data:
-#       temperature, pressure, or humidity
-# API Routes: Sensehat-X
-# ---------------------------------------------------------------------
-
-@MyDashboardApp.route("/api/sensehat-X")
-@cross_origin()
-def sensehat_x():
-    sensehat_x_count(1)
-
-
-@MyDashboardApp.route("/api/sensehat-X/<int:count>")
-@cross_origin()
-def sensehat_x_count(count):
-    sensehat_x_count_start(count, 1)
-
-
-@MyDashboardApp.route("/api/sensehat-X/<int:count>/<int:start>")
-@cross_origin()
-def sensehat_x_count_start(count, start):
-    if start > 0:
-        start -= 1
+def sense_hat_count_start(count=1, start=1):
+    if start < 1:
+        start = 1
+    session = sessionmaker(bind=engine)()
     # organise the data in reverse order
     reverse_data_query = session.query(Sensehat_TPH) \
-        .order_by(desc(Sensehat_TPH.date_recorded))
+        .order_by(desc(Sensehat_TPH.id))
     # now retrieve the number of records required
     result_proxy = reverse_data_query.limit(count).offset(start).all()
-    sensehat_x_records = records_to_list(result_proxy)
-    sensehat_x_json = jsonify(sensehat_x_records)
-    return sensehat_x_json
+    sense_hat_temperature_records = records_to_list(result_proxy)
+    sense_hat_temperature_json = jsonify(sense_hat_temperature_records)
+    session.close()
+    return sense_hat_temperature_json
 
 
 if __name__ == '__main__':

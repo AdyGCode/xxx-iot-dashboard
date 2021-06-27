@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- Name: templates/clock.html -->
+
+{% block title %}
+    404 | Flask Demo
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='vendor/fontawesome-free/css/fa.all.css') }}"/>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="p-8 bg-gray-900 text-gray-400 rounded-xl my-6">
+            <h2 class="text-6xl font-bold text-red-600">
+                <i class="fa fa-exclamation-triangle text-yellow-400 pr-6"></i>
+                OOPS! We got a 404
+            </h2>
+            <div class="p-4 bg-gray-800 text-gray-400 rounded-lg my-2 mt-16">
+                <p class="text-3xl py-2 text-red-500">File not found</p>
+                <p class="text-xl">OOPS, We seem to have met a small bump</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}
