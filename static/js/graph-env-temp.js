@@ -1,12 +1,12 @@
 /**********************************************************************
-    File:     /static/js/graph-env-temp.py
-    Project:  xxx-iot-dashboard
-    Author:   STUDENT NAME <STUDENT@EMAIL-ADDRESS>
-    Created:  5/05/2021
-    Purpose:  Provides the Environmental Temperature page with the
-              dynamically updating chart by accessing the most recent
-              data in the database.
-***********************************************************************/
+ File:     /static/js/graph-env-temp.py
+ Project:  xxx-iot-dashboard
+ Author:   STUDENT NAME <STUDENT@EMAIL-ADDRESS>
+ Created:  5/05/2021
+ Purpose:  Provides the Environmental Temperature page with the
+ dynamically updating chart by accessing the most recent
+ data in the database.
+ ***********************************************************************/
 
 const envChartCanvas = document.getElementById("chartDemoCanvas")
 let displayPoints = 0
@@ -83,7 +83,7 @@ function updateChart() {
         let totalResponses = responseObj.length
 
         for (let responseNumber in responseObj) {
-        console.log(displayPoints, recorded_at)
+            console.log(displayPoints, recorded_at)
             let envData = responseObj[totalResponses - responseNumber - 1]
             let env = envData.temperature
             recorded_at = envData.recorded_at
