@@ -85,7 +85,9 @@ class Sensor(Base):
     mac = Column(String(32), default="zz:zz:zz:zz:zz:zz")
     boot_time = Column(DateTime, default="1000-01-01 00:00:00")
     cpu_max_load = Column(Float, default=-999)
-    gpu_max_load = Column(Float, default=-999)
+    # TODO: Make sure the following line is correct in the xxx-iot-server
+    #       project's DB.py file
+    gpu_temperature = Column(Float, default=-999)
     cpu_temperature = Column(Float, default=-999)
     ram_total = Column(Integer, default=0)
     ram_free = Column(Integer, default=0)
